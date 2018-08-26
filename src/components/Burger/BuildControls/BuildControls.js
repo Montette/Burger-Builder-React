@@ -12,7 +12,9 @@ const buildControls = (props) =>{
         label={ctrl.charAt(0).toUpperCase() + ctrl.slice(1)} 
         key={ctrl} 
         added={()=> props.ingredientAdded(ctrl)}
-        removed={()=> props.ingredientRemoved(ctrl)}/>   
+        removed={()=> props.ingredientRemoved(ctrl)}
+        isDisabled={props.controls[ctrl] === 0}
+        />   
     })
     return (
         <div className={style.BuildControls}>
