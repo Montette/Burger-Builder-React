@@ -18,6 +18,7 @@ const buildControls = (props) =>{
     })
     return (
         <div className={style.BuildControls}>
+            <p>Current Price: <b>{props.price.toFixed(2)}$</b></p>
             {controls}
         </div>
     )

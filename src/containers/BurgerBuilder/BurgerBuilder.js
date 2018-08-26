@@ -55,20 +55,17 @@ class BurgerBuilder extends Component {
 
         this.setState({
             ingredients: updatedIngredients, totalPrice: newPrice
-        })
-        
+        })   
      }
     render(){
-        const disabledInfo = {
-            ...this.state.ingredients
-        };
         return(
             <React.Fragment>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
                  controls = {this.state.ingredients} 
                  ingredientAdded={this.addIngredientHandler}
-                 ingredientRemoved={this.removeIngredientHandler}              
+                 ingredientRemoved={this.removeIngredientHandler}  
+                 price={this.state.totalPrice}            
                  />
             </React.Fragment>
         )
