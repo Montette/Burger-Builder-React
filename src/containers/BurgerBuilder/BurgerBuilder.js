@@ -18,8 +18,14 @@ class BurgerBuilder extends Component {
             cheese: 0,
             meat: 0
         },
-        totalPrice: 4
+        totalPrice: 4,
+        purchasable: false
 
+    }
+
+    updatePurchaseState = (ingredients) =>{
+        const sumOfIngredients =  Object.values(ingredients).reduce((a,b) => a + b);
+        this.setState({purchasable: sumOfIngredients > 0})   
     }
 
     addIngredientHandler = (type) =>{
@@ -31,11 +37,11 @@ class BurgerBuilder extends Component {
         updatedIngredients[type] = updatedCount;
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice + INGREDIENT_PRICES[type];
-        console.log(newPrice);
-
+    
         this.setState({
             ingredients: updatedIngredients, totalPrice: newPrice
         })
+        this.updatePurchaseState(updatedIngredients);
     }
 
     removeIngredientHandler = (type) =>{
@@ -50,13 +56,17 @@ class BurgerBuilder extends Component {
         updatedIngredients[type] = updatedCount;
         const oldPrice = this.state.totalPrice;
         const newPrice = oldPrice - INGREDIENT_PRICES[type];
-        console.log(newPrice);
-       
-
+    
         this.setState({
             ingredients: updatedIngredients, totalPrice: newPrice
-        })   
+        })
+        this.updatePurchaseState(updatedIngredients); 
      }
+
+     showModalHandler = () => {
+         console.log("modal")
+     }
+     
     render(){
         return(
             <React.Fragment>
@@ -65,7 +75,9 @@ class BurgerBuilder extends Component {
                  controls = {this.state.ingredients} 
                  ingredientAdded={this.addIngredientHandler}
                  ingredientRemoved={this.removeIngredientHandler}  
-                 price={this.state.totalPrice}            
+                 price={this.state.totalPrice} 
+                 purchase={this.state.purchasable}
+                 showModal = {this.showModalHandler}           
                  />
             </React.Fragment>
         )

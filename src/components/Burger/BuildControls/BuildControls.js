@@ -20,6 +20,7 @@ const buildControls = (props) =>{
         <div className={style.BuildControls}>
             <p>Current Price: <b>{props.price.toFixed(2)}$</b></p>
             {controls}
+            <button className={style.OrderButton} onClick={props.showModal} disabled={!props.purchase}>ORDER NOW</button>
         </div>
     )
 }
