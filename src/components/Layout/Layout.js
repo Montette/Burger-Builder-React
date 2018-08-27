@@ -3,14 +3,30 @@ import style from './Layout.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer'
 
-const layout = (props) => (
-    <React.Fragment>
-        <Toolbar />
-        <SideDrawer />
-        <main className={style.Content}>
-            {props.children}
-        </main>
-    </React.Fragment>
-)
 
-export default layout
+class Layout extends React.Component {
+    state = {
+        openSideDrawer: false
+    }
+
+    clickSideDrawerHandler = () =>{
+        this.setState({
+            openSideDrawer: !this.state.openSideDrawer
+        })
+    }
+    render() {
+        return (
+            <React.Fragment>
+                    <Toolbar clickMenu={this.clickSideDrawerHandler} />
+                    <SideDrawer open={this.state.openSideDrawer} clickBackdrop={this.clickSideDrawerHandler}/>
+                    <main className={style.Content}>
+                        {this.props.children}
+                    </main>
+             </React.Fragment>
+        )
+
+    }
+
+}
+
+export default Layout

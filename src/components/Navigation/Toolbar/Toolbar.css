@@ -23,8 +23,16 @@
     height: 80%;
 }
 
+.Button {
+    display: none;
+}
+
 @media (max-width: 499px){
     .Nav {
         display: none;
+    }
+
+    .Button {
+        display: block;
     }
 }

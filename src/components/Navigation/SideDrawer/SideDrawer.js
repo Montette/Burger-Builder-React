@@ -6,13 +6,11 @@ import NavigationItem from '../NavigationItems/NavigationItem/NavigationItem';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 
 const sideDrawer = (props) =>{
-
+    let attachedClasses = props.open ? [style.SideDrawer, style.Open].join(' '):[style.SideDrawer, style.Closed].join(' ');
     return (
         <React.Fragment>
-
-       
-        <Backdrop show={'true'} />
-        <div className={style.SideDrawer}>
+        <Backdrop show={props.open} close={props.clickBackdrop}/>
+        <div className={attachedClasses}>
              <div className={style.Logo}>
                 <Logo/>
             </div>

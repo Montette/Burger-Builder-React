@@ -9,6 +9,7 @@ const toolbar = (props) =>{
 
     return (
         <header className={style.Toolbar}>
+            <button className={style.Button} onClick={props.clickMenu}>Menu</button>
             <div className={style.Logo}>
                 <Logo/>
             </div>
