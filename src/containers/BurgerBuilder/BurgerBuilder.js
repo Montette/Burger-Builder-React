@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
+
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 
@@ -70,14 +71,20 @@ class BurgerBuilder extends Component {
          this.setState({purchasing:true});
      }
 
-     closePurchasingHandler = () =>{
+     purchaseCancelHandler = () =>{
         this.setState({purchasing: false});
+     }
+
+     purchaseContinueHandler = () =>{
+        alert('You continue!')
      }
 
     render(){
         return(
             <React.Fragment>
-                <Burger ingredients={this.state.ingredients}/>
+                <Burger 
+                ingredients={this.state.ingredients}
+                />
                 <BuildControls
                  controls = {this.state.ingredients} 
                  ingredientAdded={this.addIngredientHandler}
@@ -89,13 +96,17 @@ class BurgerBuilder extends Component {
                  
                  <Modal
                  show={this.state.purchasing}
-                 close={this.closePurchasingHandler}
+                 close={this.purchaseCancelHandler}
                  >
                     <OrderSummary 
                         ingredients={this.state.ingredients}
                         price={this.state.totalPrice}
+                        close={this.purchaseCancelHandler}
+                        continue={this.purchaseContinueHandler}
                     />
-                 </Modal> 
+                 </Modal>
+                
+
             </React.Fragment>
         )
     }
