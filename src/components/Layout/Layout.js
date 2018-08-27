@@ -10,15 +10,17 @@ class Layout extends React.Component {
     }
 
     clickSideDrawerHandler = () =>{
-        this.setState({
-            openSideDrawer: !this.state.openSideDrawer
+        this.setState(prevState =>{
+            return {openSideDrawer: !prevState.openSideDrawer}
         })
     }
     render() {
         return (
             <React.Fragment>
-                    <Toolbar clickMenu={this.clickSideDrawerHandler} />
-                    <SideDrawer open={this.state.openSideDrawer} clickBackdrop={this.clickSideDrawerHandler}/>
+                    <Toolbar openMenu={this.clickSideDrawerHandler} />
+                    <SideDrawer 
+                        open={this.state.openSideDrawer} 
+                        clickBackdrop={this.clickSideDrawerHandler}/>
                     <main className={style.Content}>
                         {this.props.children}
                     </main>

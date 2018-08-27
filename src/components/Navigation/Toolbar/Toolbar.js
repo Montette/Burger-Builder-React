@@ -3,13 +3,17 @@ import style from './Toolbar.css';
 import Logo from '../../Logo/Logo.js';
 import NavigationItems from '../NavigationItems/NavigationItems';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 
 
 const toolbar = (props) =>{
 
     return (
         <header className={style.Toolbar}>
-            <button className={style.Button} onClick={props.clickMenu}>Menu</button>
+           
+            <DrawerToggle
+            clickMenu={props.openMenu}
+            />
             <div className={style.Logo}>
                 <Logo/>
             </div>
