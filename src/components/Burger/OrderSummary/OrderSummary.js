@@ -9,12 +9,11 @@ const orderSummary = (props) => {
     })
 
     return (
-      
         <React.Fragment>
             <h3 className={style.Title}>Your Order</h3>
             <p>Delicious burger with the following ingredients:</p>
             <ul>{ingredients}</ul>
-            <p><b>Total price: {props.price.toFixed(2)}$</b></p>
+            <p>Total price: <b>{props.price.toFixed(2)}$</b></p>
             <p>Continue to checkout?</p>
             <div className={style.ButtonsContainer}>
             <Button
@@ -25,12 +24,8 @@ const orderSummary = (props) => {
             click={props.close}
             btnType="Danger"
             >CLOSE</Button>
-            </div>
-            
-            
-        </React.Fragment>
-            
-      
+            </div>       
+        </React.Fragment>  
     )
 }
 
