@@ -7,7 +7,13 @@ import Backdrop from '../Backdrop/Backdrop';
 class Modal extends React.Component {
 
     shouldComponentUpdate (nextProps, nextState){
-        return nextProps.show !== this.props.show
+        // return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
+        console.log('should update');
+        return nextProps.show !== this.props.show || nextProps.loading !== this.props.loading
+    }
+
+    componentDidUpdate(){
+        console.log('did update');
     }
 
     render(){
